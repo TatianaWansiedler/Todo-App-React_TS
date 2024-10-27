@@ -1,3 +1,13 @@
-.todoList {
-  margin-top: 20px;
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todoItem {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }

@@ -1,8 +1,23 @@
-import React, { FC } from 'react';
-import styles from './TodoList.module.scss';
+import { FC } from "react";
+import { useTodoContext } from "../../context/TodoContext";
+import AddTodo from '../AddTodoForm/AddTodoForm';
+import styles from "./TodoList.module.scss";
 
 const TodoList: FC = () => {
-  return <div className={styles.todoList}>Todo List </div>;
+  const { todos } = useTodoContext();
+
+  return (
+    <div>
+      <AddTodo />
+      <ul className={styles.list}>
+        {todos.map(todo => (
+          <li key={todo.id} className={styles.todoItem}>
+            {todo.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default TodoList;
