@@ -8,7 +8,7 @@ interface TodoItemProps {
 }
 
 const TodoItem: FC<TodoItemProps> = ({ todo }) => {
-  const { toggle, deleteTask } = useTodoContext();
+  const { toggle } = useTodoContext();
   return (
     <li className={styles.item}>
       <input
@@ -20,9 +20,6 @@ const TodoItem: FC<TodoItemProps> = ({ todo }) => {
       <span className={todo.isCompleted ? styles.completed : ""}>
         {todo.text}
       </span>
-      <button onClick={() => deleteTask(todo.id)} className={styles.deleteBtn}>
-        x
-      </button>
     </li>
   );
 };

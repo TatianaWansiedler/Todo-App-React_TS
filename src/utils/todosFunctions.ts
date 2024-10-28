@@ -30,12 +30,6 @@ export const toggleComplete = (todos: Todo[], id: number): Todo[] => {
   return updatedTodos;
 };
 
-export const deleteTodo = (todos: Todo[], id: number): Todo[] => {
-  const updatedTodos = todos.filter((todo) => todo.id !== id);
-  saveToLocalStorage(updatedTodos);
-  return updatedTodos;
-};
-
 export const clearCompleted = (todos: Todo[]): Todo[] => {
   const updatedTodos = todos.filter((todo) => !todo.isCompleted);
   saveToLocalStorage(updatedTodos);

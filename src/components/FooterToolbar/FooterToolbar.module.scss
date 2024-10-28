@@ -1,5 +1,60 @@
 .toolbar {
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  font-size: 0.9rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
 }
+
+.counter {
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
+}
+
+.button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1rem;
+
+  &.active{
+    border: 1px solid #007bff;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    color: #015fc3;
+  }
+
+  @media (max-width: 480px) {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+.clearButton {
+  color: #dc3545;
+
+  &:hover {
+    color: #c82333;
+  }
+}
+

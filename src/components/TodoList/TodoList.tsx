@@ -1,21 +1,19 @@
 import { FC } from "react";
 import { useTodoContext } from "../../context/TodoContext";
-import AddTodo from "../AddTodoForm/AddTodoForm";
-import styles from "./TodoList.module.scss";
 import TodoItem from "../TodoItem/TodoItem";
+import styles from "./TodoList.module.scss";
 
 const TodoList: FC = () => {
-  const { todos } = useTodoContext();
+  const { filteredTodos } = useTodoContext();
 
-  if (todos.length === 0) {
+  if (filteredTodos.length === 0) {
     return <p className={styles.emptyMessage}>No tasks available</p>;
   }
-  
+
   return (
     <div>
-      <AddTodo />
       <ul className={styles.list}>
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
