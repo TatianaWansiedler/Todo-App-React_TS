@@ -1,9 +1,19 @@
-import { createContext, FC, ReactNode, useContext, useState } from 'react';
-import { Todo } from '../types/todos';
+import { createContext, FC, ReactNode, useContext, useEffect, useState } from "react";
+import { Todo } from "../types/todos";
+import {
+  addTodo,
+  clearCompleted,
+  deleteTodo,
+  loadFromLocalStorage,
+  toggleComplete,
+} from "../utils/todosFunctions";
 
 interface TodoContextProps {
   todos: Todo[];
-  addTodo: (text: string) => void;
+  addTask: (text: string) => void;
+  toggle: (id: number) => void;
+  deleteTask: (id: number) => void;
+  clearCompletedTasks: () => void;
 }
 
 const TodoContext = createContext<TodoContextProps | null>(null);
@@ -11,24 +21,27 @@ const TodoContext = createContext<TodoContextProps | null>(null);
 export const useTodoContext = () => {
   const context = useContext(TodoContext);
   if (!context) {
-    throw new Error('useTodoContext must be used within a TodoProvider');
+    throw new Error("useTodoContext must be used within a TodoProvider");
   }
   return context;
 };
 
 export const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [todos, setTodos] = useState<Todo[]>(loadFromLocalStorage());
 
-  const [todos, setTodos] = useState<Todo[]>([]);
+  useEffect(() => {
+    setTodos(loadFromLocalStorage());
+  }, []);
 
-  const addTodo = (text: string) => {
-    const newTodo: Todo = { id: Date.now(), text, isCompleted: false };
-    setTodos(prevTodos => [...prevTodos, newTodo]);
-  };
-
-
+  const addTask = (text: string) => setTodos((prev) => addTodo(prev, text));
+  const toggle = (id: number) => setTodos((prev) => toggleComplete(prev, id));
+  const deleteTask = (id: number) => setTodos((prev) => deleteTodo(prev, id));
+  const clearCompletedTasks = () => setTodos((prev) => clearCompleted(prev));
 
   return (
-    <TodoContext.Provider value={{todos, addTodo}}>
+    <TodoContext.Provider
+      value={{ todos, addTask, toggle, deleteTask, clearCompletedTasks }}
+    >
       {children}
     </TodoContext.Provider>
   );

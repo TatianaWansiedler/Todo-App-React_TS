@@ -1,14 +1,14 @@
-import React from 'react';
-import TodoList from './components/TodoList/TodoList';
-import FooterToolbar from './components/FooterToolbar/FooterToolbar';
-import { TodoProvider } from './context/TodoContext';
+import { FC } from 'react';
 import './App.scss';
+import FooterToolbar from './components/FooterToolbar/FooterToolbar';
+import TodoList from './components/TodoList/TodoList';
+import { TodoProvider } from './context/TodoContext';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <TodoProvider>
       <div className="app">
-        <h1>Todo List</h1>
+        <h1>Todos</h1>
         <TodoList />
         <FooterToolbar />
       </div>
