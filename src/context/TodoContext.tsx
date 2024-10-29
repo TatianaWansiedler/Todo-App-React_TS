@@ -2,6 +2,7 @@ import {
   createContext,
   FC,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -11,10 +12,11 @@ import {
   addTodo,
   clearCompleted,
   loadFromLocalStorage,
+  saveToLocalStorage,
   toggleComplete,
 } from "../utils/todosFunctions";
 
-interface TodoContextProps {
+export interface TodoContextProps {
   todos: Todo[];
   filteredTodos: Todo[];
   filter: TodoFilter;
@@ -24,7 +26,9 @@ interface TodoContextProps {
   setFilter: (filter: TodoFilter) => void;
 }
 
-const TodoContext = createContext<TodoContextProps | null>(null);
+export const TodoContext = createContext<TodoContextProps | undefined>(
+  undefined
+);
 
 export const useTodoContext = () => {
   const context = useContext(TodoContext);
@@ -42,9 +46,21 @@ export const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setTodos(loadFromLocalStorage());
   }, []);
 
-  const addTask = (text: string) => setTodos((prev) => addTodo(prev, text));
-  const toggle = (id: number) => setTodos((prev) => toggleComplete(prev, id));
-  const clearCompletedTasks = () => setTodos((prev) => clearCompleted(prev));
+  useEffect(() => {
+    saveToLocalStorage(todos);
+  }, [todos]);
+
+  const addTask = useCallback((text: string) => {
+    setTodos((prev) => addTodo(prev, text));
+  }, []);
+
+  const toggle = useCallback((id: number) => {
+    setTodos((prev) => toggleComplete(prev, id));
+  }, []);
+
+  const clearCompletedTasks = useCallback(() => {
+    setTodos((prev) => clearCompleted(prev));
+  }, []);
 
   const filteredTodos = todos.filter((todo) => {
     switch (filter) {

@@ -5,12 +5,13 @@ import { useTodoContext } from "../../context/TodoContext";
 
 interface TodoItemProps {
   todo: Todo;
+  "data-testid"?: string;
 }
 
-const TodoItem: FC<TodoItemProps> = ({ todo }) => {
+const TodoItem: FC<TodoItemProps> = ({ todo, 'data-testid': testId }) => {
   const { toggle } = useTodoContext();
   return (
-    <li className={styles.item}>
+    <li className={styles.item} data-testid={testId}>
       <input
         type="checkbox"
         checked={todo.isCompleted}
