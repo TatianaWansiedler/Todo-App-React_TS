@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useTodoContext } from "../../context/TodoContext";
 import styles from "./FooterToolbar.module.scss";
 import { TodoFilter } from "../../types/todos";
@@ -48,4 +48,4 @@ const FooterToolbar: FC = () => {
   );
 };
 
-export default FooterToolbar;
+export default memo(FooterToolbar);

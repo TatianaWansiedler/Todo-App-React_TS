@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from "react";
 import { Todo, TodoFilter } from "../types/todos";
@@ -62,31 +63,34 @@ export const TodoProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setTodos((prev) => clearCompleted(prev));
   }, []);
 
-  const filteredTodos = todos.filter((todo) => {
-    switch (filter) {
-      case "active":
-        return !todo.isCompleted;
-      case "completed":
-        return todo.isCompleted;
-      case "all":
-      default:
-        return true;
-    }
-  });
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) => {
+      switch (filter) {
+        case "active":
+          return !todo.isCompleted;
+        case "completed":
+          return todo.isCompleted;
+        case "all":
+        default:
+          return true;
+      }
+    });
+  }, [todos, filter]);
+
+  const contextValue = useMemo(
+    () => ({
+      todos,
+      addTask,
+      toggle,
+      clearCompletedTasks,
+      setFilter,
+      filter,
+      filteredTodos,
+    }),
+    [todos, addTask, toggle, clearCompletedTasks, filter, filteredTodos]
+  );
 
   return (
-    <TodoContext.Provider
-      value={{
-        todos,
-        addTask,
-        toggle,
-        clearCompletedTasks,
-        setFilter,
-        filter,
-        filteredTodos,
-      }}
-    >
-      {children}
-    </TodoContext.Provider>
+    <TodoContext.Provider value={contextValue}>{children}</TodoContext.Provider>
   );
 };

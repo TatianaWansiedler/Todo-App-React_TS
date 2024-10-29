@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useTodoContext } from "../../context/TodoContext";
 import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.scss";
@@ -29,4 +29,4 @@ const TodoList: FC = () => {
   );
 };
 
-export default TodoList;
+export default memo(TodoList);

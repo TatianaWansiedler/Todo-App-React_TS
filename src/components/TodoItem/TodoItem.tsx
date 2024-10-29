@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Todo } from "../../types/todos";
 import styles from "./TodoItem.module.scss";
 import { useTodoContext } from "../../context/TodoContext";
@@ -31,4 +31,4 @@ const TodoItem: FC<TodoItemProps> = ({ todo, "data-testid": testId }) => {
   );
 };
 
-export default TodoItem;
+export default memo(TodoItem);

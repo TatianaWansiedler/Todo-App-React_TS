@@ -1,9 +1,9 @@
-import { FC, KeyboardEvent, useState } from "react";
+import { FC, KeyboardEvent, memo, useState } from "react";
 import { useTodoContext } from "../../context/TodoContext";
 import styles from "./AddTodoForm.module.scss";
 
 const AddTodoForm: FC = () => {
-  const { addTask } = useTodoContext();
+  const { addTask, setFilter } = useTodoContext();
   const [newTask, setNewTask] = useState<string>("");
 
   const handleAddTodo = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -11,6 +11,7 @@ const AddTodoForm: FC = () => {
     if (newTask.trim()) {
       addTask(newTask);
       setNewTask("");
+      setFilter("all")
     }
   };
 
@@ -40,4 +41,4 @@ const AddTodoForm: FC = () => {
   );
 };
 
-export default AddTodoForm;
+export default memo(AddTodoForm);
