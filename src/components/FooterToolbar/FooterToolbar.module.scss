@@ -1,26 +1,26 @@
 .toolbar {
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--secondary-color);
   margin-top: 20px;
-  font-size: 0.9rem;
+  font-size: 16px;
+  background-color: #fefefe;
+  z-index: 10;
+  padding: 20px;
 
   @media (max-width: 480px) {
     flex-direction: column;
     gap: 10px;
-    font-size: 0.8rem;
   }
-}
-
-.counter {
-  color: #333;
 }
 
 .filters {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 
   @media (max-width: 480px) {
     gap: 8px;
@@ -29,19 +29,15 @@
 
 .button {
   background: none;
-  border: none;
-  color: #007bff;
+  border: 1px solid transparent;
+  color: var(--text-color);
   cursor: pointer;
   padding: 5px 10px;
-  font-size: 1rem;
+  font-size: 14px;
 
   &.active {
-    border: 1px solid #007bff;
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
-  }
-
-  &:hover {
-    color: #015fc3;
   }
 
   @media (max-width: 480px) {
@@ -51,12 +47,14 @@
 }
 
 .clearButton {
-  color: #dc3545;
-
   &:hover {
-    color: #c82333;
+    color: var(--primary-color);
   }
   &:disabled {
     cursor: auto;
   }
+}
+
+.counter{
+  min-width: 100px;
 }

@@ -1,26 +1,58 @@
 .item {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--secondary-color);
+  font-size: 20px;
+  color: rgb(78, 78, 78);
   &:last-child {
     border-bottom: none;
   }
 }
 
-.checkbox {
-  margin-right: 10px;
+.checkbox-wrapper-18 .round {
+  position: relative;
+}
+
+.checkbox-wrapper-18 .round label {
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+  display: block;
+}
+
+.checkbox-wrapper-18 .round label:after {
+  border: 2px solid rgb(119, 192, 175);
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 8px;
+  opacity: 0;
+  position: absolute;
+  top: 9px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label {
+  border-color: rgb(119, 192, 175);
+}
+
+.checkbox-wrapper-18 .round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
 }
 
 .completed {
   text-decoration: line-through;
-  color: gray;
-}
-
-.deleteBtn {
-  background: transparent;
-  border: none;
-  color: red;
-  cursor: pointer;
+  color: var(--secondary-color);
 }

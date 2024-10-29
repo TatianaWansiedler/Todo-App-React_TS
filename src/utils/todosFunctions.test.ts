@@ -1,4 +1,4 @@
-import { mockTodos } from '../tests/mockData';
+import { mockTodos } from "../tests/mockData";
 import {
   addTodo,
   clearCompleted,

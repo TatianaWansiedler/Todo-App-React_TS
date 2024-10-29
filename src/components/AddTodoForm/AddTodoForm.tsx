@@ -34,7 +34,7 @@ const AddTodoForm: FC = () => {
         data-testid="add-todo-input"
       />
       <button type="submit" className={styles.addBtn} data-testid="add-todo-button">
-        Add task
+        ADD
       </button>
     </form>
   );

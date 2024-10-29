@@ -7,11 +7,15 @@ const TodoList: FC = () => {
   const { filteredTodos } = useTodoContext();
 
   if (filteredTodos.length === 0) {
-    return <p className={styles.emptyMessage} data-testid="empty-message">No tasks available</p>;
+    return (
+      <p className={styles.emptyMessage} data-testid="empty-message">
+        No tasks available
+      </p>
+    );
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <ul className={styles.list} data-testid="todo-list">
         {filteredTodos.map((todo) => (
           <TodoItem

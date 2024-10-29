@@ -39,7 +39,11 @@ describe("TodoItem", () => {
   });
   
   test("adds .completed class when todo is completed", () => {
-    const completedTodo: Todo = { id: 1, text: "Completed Todo", isCompleted: true };
+    const completedTodo: Todo = {
+      id: 1,
+      text: "Completed Todo",
+      isCompleted: true,
+    };
     renderTodoItem(completedTodo);
 
     const todoElement = screen.getByText("Completed Todo");

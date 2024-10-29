@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { mockTodos } from '../../tests/mockData';
+import { mockTodos } from "../../tests/mockData";
 import { MockTodoContextProvider } from "../../tests/mockTodoContextProvider";
 import TodoList from "./TodoList";
 

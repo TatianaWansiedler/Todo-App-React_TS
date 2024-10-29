@@ -42,7 +42,7 @@ const FooterToolbar: FC = () => {
         data-testid="clear-completed"
         disabled={!todos.length}
       >
-        Clear Completed
+        Clear completed
       </button>
     </div>
   );
