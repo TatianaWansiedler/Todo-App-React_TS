@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TatianaWansiedler/Todo-App-React_TS/static/css/main.9d7b1df3.css",
+    "main.js": "/TatianaWansiedler/Todo-App-React_TS/static/js/main.9b18dda9.js",
+    "static/js/453.37753ddd.chunk.js": "/TatianaWansiedler/Todo-App-React_TS/static/js/453.37753ddd.chunk.js",
+    "index.html": "/TatianaWansiedler/Todo-App-React_TS/index.html",
+    "main.9d7b1df3.css.map": "/TatianaWansiedler/Todo-App-React_TS/static/css/main.9d7b1df3.css.map",
+    "main.9b18dda9.js.map": "/TatianaWansiedler/Todo-App-React_TS/static/js/main.9b18dda9.js.map",
+    "453.37753ddd.chunk.js.map": "/TatianaWansiedler/Todo-App-React_TS/static/js/453.37753ddd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d7b1df3.css",
+    "static/js/main.9b18dda9.js"
+  ]
+}
